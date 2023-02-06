@@ -2,39 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreElectricityMeterRequest;
-use App\Http\Requests\UpdateElectricityMeterRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use App\Models\ElectricityMeter;
+use Illuminate\View\View;
 
 class ElectricityMeterController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $electricityMeters = ElectricityMeter::orderBy('device_id')->paginate(10);
+
+        return view('electricity.overview', [
+            'electricityMeters' => $electricityMeters,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('electricity.createElectricityMeter');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreElectricityMeterRequest  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreElectricityMeterRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -64,13 +69,13 @@ class ElectricityMeterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateElectricityMeterRequest  $request
-     * @param  \App\Models\ElectricityMeter  $electricityMeter
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  ElectricityMeter  $electricityMeter
+     * @return RedirectResponse
      */
-    public function update(UpdateElectricityMeterRequest $request, ElectricityMeter $electricityMeter)
+    public function update(Request $request, ElectricityMeter $electricityMeter): RedirectResponse
     {
-        //
+        #return ;
     }
 
     /**

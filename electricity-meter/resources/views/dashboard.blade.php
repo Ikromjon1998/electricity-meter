@@ -50,11 +50,11 @@
                                     {{--                                        <li><a  href="#">Bearbeiten</a></li>--}}
                                     {{--                                        <li class="uk-nav-divider"></li>--}}
                                     {{--                                        <li><a--}}
-                                    {{--                                                onclick="event.preventDefault(); if(confirm('Stromzähler wirklich löschen?')) { document.getElementById('delete-{{$powerMeter->id}}').submit(); }">{{ __('translate.delete') }}</a>--}}
+                                    {{--                                                onclick="event.preventDefault(); if(confirm('Stromzähler wirklich löschen?')) { document.getElementById('delete-{{$electricity->id}}').submit(); }">{{ __('translate.delete') }}</a>--}}
                                     {{--                                        </li>--}}
 
                                     {{--                                    </ul>--}}
-                                    {{--                                    <form id="delete-{{$powerMeter->id}}" method="POST" action="{{route('delete', ['powerMeter' => $powerMeter])}}">--}}
+                                    {{--                                    <form id="delete-{{$electricity->id}}" method="POST" action="{{route('delete', ['electricity' => $electricity])}}">--}}
                                     {{--                                        @csrf--}}
                                     {{--                                        @method('DELETE')--}}
                                     {{--                                    </form>--}}

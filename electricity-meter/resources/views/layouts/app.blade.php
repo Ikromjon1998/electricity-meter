@@ -35,7 +35,9 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="uk-container">
+                    @yield('content')
+                </div>
             </main>
         </div>
     </body>
