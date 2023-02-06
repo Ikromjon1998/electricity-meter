@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ElectricityMeter;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CompanySeeder::class,
+            ElectricityMeterSeeder::class,
         ]);
     }
 }
