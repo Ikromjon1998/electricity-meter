@@ -13,8 +13,10 @@ trait Uuids
     {
         parent::boot();
 
-        static::creating(static function ($model) {
-            $model->{$model->getKeyName()} = Str::uuid()->toString();
-        });
-    }
+        static::creating(
+            static function ($model) {
+                $model->{$model->getKeyName()} = Str::uuid()->toString();
+            }
+        );
+    }//end boot()
 }

@@ -18,10 +18,12 @@ class ElectricityMeterController extends Controller
     {
         $electricityMeters = ElectricityMeter::orderBy('device_id')->paginate(10);
 
-        return view('electricity.overview', [
-            'electricityMeters' => $electricityMeters,
-        ]);
-    }
+        return view(
+            'electricity.overview',
+            ['electricityMeters' => $electricityMeters]
+        );
+    }//end index()
+
 
     /**
      * Show the form for creating a new resource.
@@ -31,61 +33,62 @@ class ElectricityMeterController extends Controller
     public function create(): View
     {
         return view('electricity.createElectricityMeter');
-    }
+    }//end create()
+
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
-    }
+    }//end store()
+
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ElectricityMeter  $electricityMeter
+     * @param  \App\Models\ElectricityMeter $electricityMeter
      * @return \Illuminate\Http\Response
      */
     public function show(ElectricityMeter $electricityMeter)
     {
-        //
-    }
+    }//end show()
+
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ElectricityMeter  $electricityMeter
+     * @param  \App\Models\ElectricityMeter $electricityMeter
      * @return \Illuminate\Http\Response
      */
     public function edit(ElectricityMeter $electricityMeter)
     {
-        //
-    }
+    }//end edit()
+
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  ElectricityMeter  $electricityMeter
+     * @param  Request          $request
+     * @param  ElectricityMeter $electricityMeter
      * @return RedirectResponse
      */
     public function update(Request $request, ElectricityMeter $electricityMeter): RedirectResponse
     {
-        #return ;
-    }
+        // return ;
+    }//end update()
+
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ElectricityMeter  $electricityMeter
+     * @param  \App\Models\ElectricityMeter $electricityMeter
      * @return \Illuminate\Http\Response
      */
     public function destroy(ElectricityMeter $electricityMeter)
     {
-        //
-    }
-}
+    }//end destroy()
+}//end class

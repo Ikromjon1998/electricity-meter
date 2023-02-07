@@ -13,8 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-    }
+    }//end register()
+
 
     /**
      * Bootstrap any application services.
@@ -23,6 +23,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-    }
-}
+    }//end boot()
+}//end class

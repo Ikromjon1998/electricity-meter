@@ -11,6 +11,7 @@ class Company extends Model
     use Uuids;
 
     public $incrementing = false;
+
     protected $keyType = 'string';
 
     protected $fillable = [
@@ -23,4 +24,4 @@ class Company extends Model
         'email',
         'homepage',
     ];
-}
+}//end class

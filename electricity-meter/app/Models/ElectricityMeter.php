@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ElectricityMeter extends Model
 {
-    use HasFactory, Uuids;
+    use HasFactory;
+    use Uuids;
 
     public $incrementing = false;
 
@@ -18,6 +19,6 @@ class ElectricityMeter extends Model
         'device_id',
         'description',
         'ebt',
-        'location'
+        'location',
     ];
-}
+}//end class

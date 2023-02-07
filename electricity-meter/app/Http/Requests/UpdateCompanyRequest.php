@@ -9,12 +9,13 @@ class UpdateCompanyRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @return boolean
      */
     public function authorize()
     {
         return false;
-    }
+    }//end authorize()
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -23,8 +24,6 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
-    }
-}
+        return [];
+    }//end rules()
+}//end class

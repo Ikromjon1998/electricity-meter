@@ -28,6 +28,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/electricity';
 
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      *
@@ -36,7 +37,8 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-    }
+    }//end boot()
+
 
     /**
      * Define the routes for the application.
@@ -48,31 +50,26 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->electricityMeterRoutes();
-    }
+    }//end map()
+
 
     protected function mapWebRoutes(): void
     {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
-    }
+        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/web.php'));
+    }//end mapWebRoutes()
+
 
     protected function mapApiRoutes(): void
     {
-        Route::prefix('api')
-            ->as('api.')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
-    }
+        Route::prefix('api')->as('api.')->middleware('api')->namespace($this->namespace)->group(base_path('routes/api.php'));
+    }//end mapApiRoutes()
+
 
     protected function electricityMeterRoutes(): void
     {
-        Route::prefix('electricity')
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/electricity.php'));
-    }
+        Route::prefix('electricity')->middleware('web')->namespace($this->namespace)->group(base_path('routes/electricity.php'));
+    }//end electricityMeterRoutes()
+
 
     /**
      * Configure the rate limiters for the application.
@@ -81,8 +78,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting()
     {
-        RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
-        });
-    }
-}
+        RateLimiter::for(
+            'api',
+            function (Request $request) {
+                return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            }
+        );
+    }//end configureRateLimiting()
+}//end class
