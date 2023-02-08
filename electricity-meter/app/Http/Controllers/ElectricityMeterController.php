@@ -24,6 +24,7 @@ class ElectricityMeterController extends Controller
         );
     }//end index()
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,11 +40,33 @@ class ElectricityMeterController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Request $request
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate(
+            [
+                'description' => 'string',
+                'device_id'   => 'string',
+                'ebt'         => 'nullable | string',
+                'location'    => 'nullable | string',
+            ]
+        );
+
+        $electricityMeter = new ElectricityMeter(
+            [
+                'description' => $validatedData['description'],
+                'device_id'   => $validatedData['device_id'],
+                'ebt'         => $validatedData['ebt'],
+                'location'    => $validatedData['location'],
+            ]
+        );
+
+        $electricityMeter->save();
+
+        return redirect(route('electricity-meters'))->with('success', sprintf('Stromzähler %s hinzugefügt', $validatedData['device_id']));
     }//end store()
+
 
     /**
      * Display the specified resource.
@@ -63,11 +86,12 @@ class ElectricityMeterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ElectricityMeter $electricityMeter
-     * @return \Illuminate\Http\Response
+     * @param  ElectricityMeter $electricityMeter
+     * @return View
      */
     public function edit(ElectricityMeter $electricityMeter)
     {
+        return view('electricity.editElectricity', ['electricityMeter' => $electricityMeter]);
     }//end edit()
 
 
@@ -80,17 +104,37 @@ class ElectricityMeterController extends Controller
      */
     public function update(Request $request, ElectricityMeter $electricityMeter): RedirectResponse
     {
-        // return ;
+        $validatedData = $request->validate(
+            [
+                'description' => 'nullable | string',
+                'device_id'   => 'nullable | string',
+                'ebt'         => 'nullable | string',
+                'location'    => 'nullable | string',
+            ]
+        );
+
+        $electricityMeter->update(
+            [
+                'description' => $validatedData['description'],
+                'device_id'   => $validatedData['device_id'],
+                'ebt'         => $validatedData['ebt'],
+                'location'    => $validatedData['location'],
+            ]
+        );
+
+        return redirect(route('electricity-meters'));
     }//end update()
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ElectricityMeter $electricityMeter
-     * @return \Illuminate\Http\Response
+     * @param  ElectricityMeter $electricityMeter
+     * @return RedirectResponse
      */
     public function destroy(ElectricityMeter $electricityMeter)
     {
+        $electricityMeter->delete();
+        return redirect(route('electricity-meters'));
     }//end destroy()
 }//end class

@@ -29,7 +29,7 @@
                 <tbody>
                 @foreach($electricityMeters as $electricityMeter)
                     <tr>
-                        <td class="uk-table-link"><a href="{{ route('electricity-meter-view', ['electricityMeter' => $electricityMeter]) }}" class="uk-link-reset">
+                        <td class="uk-table-link"><a href="{{ route('electricity-view', ['electricityMeter' => $electricityMeter]) }}" class="uk-link-reset">
                                 <div class="uk-text-small">{{ $electricityMeter->device_id }}</div>
                                 <div class="uk-text-meta">{{ $electricityMeter->description }}</div>
                             </a>
@@ -42,14 +42,14 @@
                             <div uk-dropdown="mode: click; pos: bottom-right" class="uk-padding-small">
                                 <ul class="uk-nav uk-dropdown-nav">
 
-                                    <li><a href="#">Bearbeiten</a></li>
+                                    <li><a href="{{ route('electricity-edit', ["electricityMeter" => $electricityMeter]) }}">Edit</a></li>
                                     <li class="uk-nav-divider"></li>
                                     <li><a
-                                            onclick="event.preventDefault(); if(confirm('Stromzähler wirklich löschen?')) { document.getElementById('delete-{{$electricityMeter->id}}').submit(); }">{{ __('translate.delete') }}</a>
+                                            onclick="event.preventDefault(); if(confirm('Stromzähler wirklich löschen?')) { document.getElementById('delete-{{$electricityMeter->id}}').submit(); }">Delete</a>
                                     </li>
 
                                 </ul>
-                                <form id="delete-{{$electricityMeter->id}}" method="POST" action="#">
+                                <form id="delete-{{$electricityMeter->id}}" method="POST" action="{{ route('electricity-delete', ["electricityMeter" => $electricityMeter]) }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>
