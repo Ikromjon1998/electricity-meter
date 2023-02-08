@@ -29,7 +29,7 @@
                 <tbody>
                 @foreach($electricityMeters as $electricityMeter)
                     <tr>
-                        <td class="uk-table-link"><a href="{{ route('electricity-meter-view', ['electricity' => $electricityMeter]) }}" class="uk-link-reset">
+                        <td class="uk-table-link"><a href="{{ route('electricity-meter-view', ['electricityMeter' => $electricityMeter]) }}" class="uk-link-reset">
                                 <div class="uk-text-small">{{ $electricityMeter->device_id }}</div>
                                 <div class="uk-text-meta">{{ $electricityMeter->description }}</div>
                             </a>

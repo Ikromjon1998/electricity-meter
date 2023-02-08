@@ -8,5 +8,5 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/add', [ElectricityMeterController::class, 'create'])->name('electricity-create');
     Route::post('/', [ElectricityMeterController::class, 'store'])->name('electricity-meter-store');
-    Route::get('/{electricity}/', [ElectricityMeterController::class, 'show'])->name('electricity-meter-view');
+    Route::get('/{electricityMeter}/', [ElectricityMeterController::class, 'show'])->name('electricity-meter-view');
 });

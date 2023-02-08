@@ -24,7 +24,6 @@ class ElectricityMeterController extends Controller
         );
     }//end index()
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,15 +45,18 @@ class ElectricityMeterController extends Controller
     {
     }//end store()
 
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ElectricityMeter $electricityMeter
-     * @return \Illuminate\Http\Response
+     * @param  ElectricityMeter $electricityMeter
+     * @return View
      */
     public function show(ElectricityMeter $electricityMeter)
     {
+        return view(
+            'electricity.view',
+            ['electricityMeter' => $electricityMeter]
+        );
     }//end show()
 
 
